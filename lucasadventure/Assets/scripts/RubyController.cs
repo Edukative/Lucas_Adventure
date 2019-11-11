@@ -5,10 +5,14 @@ using UnityEngine;
 public class RubyController : MonoBehaviour
 {
     public float speed = 9.00f;
+    Rigidbody2D rubyRB2D; // the player's Rigidbody
     // Start is called before the first frame update
     void Start()
+       
     {
-        
+
+        rubyRB2D = GetComponent<Rigidbody2D>();  
+
     }
 
     // Update is called once per frame
@@ -23,6 +27,7 @@ public class RubyController : MonoBehaviour
         position.y = position.y + speed * vertical * Time.deltaTime; // called each second instead ofof each frame
 
         transform.position = position; // saves this position to the current one
+        rubyRB2D.MovePosition(position);
 
         Debug.Log(horizontal); // see the values are you sending when pressing the keys 
     }
