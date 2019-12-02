@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
-    public float speed = 9.00f;
+    public float speed = 9999.00f;
     Rigidbody2D rubyRB2D; // the player's Rigidbody
     public int maxHealth = 5;
-    int currentHealth;
+     public int currentHealth;
     // Start is called before the first frame update
     void Start()
     {
         rubyRB2D = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth; // the current health is the max health aviable to the player 
+        currentHealth = maxHealth; // the current health is the max health aviable to the player
+
+        currentHealth = 1; //
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class RubyController : MonoBehaviour
 
 
 
-    void ChangeHealth(int amout)
+   public void ChangeHealth(int amout)
     {
         currentHealth = Mathf.Clamp(currentHealth + amout, 0, maxHealth);
         // limits the number between 0 and the max health
