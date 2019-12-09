@@ -6,7 +6,7 @@ public class DamageZone : MonoBehaviour
 {
  
 
-        void OnTriggerenter2D(Collider2D other)
+        void OnTriggerStay2D(Collider2D other)
         {
             Debug.Log("object thatcentered the trigger: " + other);
             RubyController controller = other.GetComponent<RubyController>();

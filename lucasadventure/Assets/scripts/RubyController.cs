@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
+
+    //timer values
     public float speed = 9999.00f;
     Rigidbody2D rubyRB2D; // the player's Rigidbody
     public int maxHealth = 5;
      public int currentHealth;
+
+
+    public float timeInvincible;
+    bool isInvincible;
+    float Invincibletimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +26,9 @@ public class RubyController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()   
     {
+
         float horizontal = Input.GetAxis("Horizontal"); // get the horizontal input
         float vertical = Input.GetAxis("Vertical"); // get the vertical input 
 
@@ -31,16 +40,39 @@ public class RubyController : MonoBehaviour
         transform.position = position; // saves this position to the current one
         rubyRB2D.MovePosition(position);
 
-        Debug.Log(horizontal); // see the values are you sending when pressing the keys
+        if (isInvincible)
+        {
+             Invincibletimer -= Time.deltaTime; // the timer ended
+            if (Invincibletimer < 0)
+            {
+                isInvincible = false;                                                                                                                                                                                                                                                                                                                 
+            }
+                
+        }
+
+               
     }
 
 
 
    public void ChangeHealth(int amout)
     {
+        if (amout < 0) // as is inferior to 0, it means damage
+        {
+            return;
+            isInvincibleTImer = timeInvincible; // resets the timer to the public value
+
+        }
+
+
+
         currentHealth = Mathf.Clamp(currentHealth + amout, 0, maxHealth);
         // limits the number between 0 and the max health
         Debug.Log(currentHealth + "/" + maxHealth);
+        
+
+
+   
     }
 
 }
