@@ -18,14 +18,13 @@ public class DamageZone : MonoBehaviour
 
 
                 // ! the exclamatiom is a negation value
-                if (controller.currentHealth < controller.maxHealth)
+               
 
                     controller.ChangeHealth(-1);
                 // call the health fuction and add 1 to the health of the player
 
 
-                Destroy(gameObject); // Destroys allthe game object and this script too!  
-
+                //destroy Line out!
             }
         }
     }       
