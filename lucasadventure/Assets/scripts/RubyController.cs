@@ -6,7 +6,7 @@ public class RubyController : MonoBehaviour
 {
 
     //timer values
-    public float speed = 9999.00f;
+    public float speed = 9.00f;
     Rigidbody2D rubyRB2D; // the player's Rigidbody
     public int maxHealth = 5;
      public int currentHealth;
@@ -59,8 +59,12 @@ public class RubyController : MonoBehaviour
     {
         if (amout < 0) // as is inferior to 0, it means damage
         {
-            return;
-            isInvincibleTImer = timeInvincible; // resets the timer to the public value
+            if (isInvincible)
+            {
+                return;
+            }
+            isInvincible = true; 
+            Invincibletimer = timeInvincible; // resets the timer to the public value
 
         }
 
